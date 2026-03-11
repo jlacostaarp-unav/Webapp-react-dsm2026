@@ -5,7 +5,7 @@ export const mockMovies = [
     category: "Acción",
     rating: 4.8,
     description: "Con la ayuda del teniente Jim Gordon y del nuevo y comprometido Fiscal del Distrito, Harvey Dent, Batman se propone destruir para siempre el crimen organizado en Gotham City.",
-    image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMOTNwEE5pHAWwKFcro2a.jpg"
+    image: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const mockMovies = [
     category: "Drama",
     rating: 4.9,
     description: "Acusado del asesinato de su mujer, el banquero de éxito Andy Dufresne es condenado a cadena perpetua en la prisión de Shawshank.",
-    image: "https://image.tmdb.org/t/p/w500/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const mockMovies = [
     category: "Ciencia Ficción",
     rating: 4.6,
     description: "Al ver que la vida en la Tierra está llegando a su fin, un grupo de exploradores liderados por el piloto Cooper y la científica Amelia emprenden una misión que puede ser la más importante de la historia de la humanidad.",
-    image: "https://image.tmdb.org/t/p/w500/gEU2QlsEOWepVNzMUQj2ik0yGbb.jpg"
+    image: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const mockMovies = [
     category: "Ciencia Ficción",
     rating: 4.5,
     description: "Paul Atreides se une a Chani y a los Fremen mientras planea la venganza contra los conspiradores que destruyeron a su familia.",
-    image: "https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8vtfX6qrT9.jpg"
+    image: "https://m.media-amazon.com/images/M/MV5BNThiOTM4NTAtMDczNy00YzlkLWJhNTEtZTZhNDVmYzlkZWI0XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const mockMovies = [
     category: "Suspense",
     rating: 4.8,
     description: "Toda la familia de Ki-taek está en el paro. Su hijo mayor, Ki-woo, empieza a dar clases particulares en casa de Park, un empresario adinerado.",
-    image: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+    image: "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg"
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const mockMovies = [
     category: "Acción",
     rating: 4.7,
     description: "En el año 180, el Imperio Romano domina todo el mundo conocido. Tras una gran victoria, el anciano emperador Marco Aurelio decide transferir el poder a Máximo, bravo general de sus ejércitos.",
-    image: "https://image.tmdb.org/t/p/w500/dWaEACnZ0Y3k4zLqL7B9E007aIt.jpg"
+    image: "https://m.media-amazon.com/images/I/91sdz07c9FL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     id: 8,
@@ -61,6 +61,6 @@ export const mockMovies = [
     category: "Animación",
     rating: 4.4,
     description: "Las voces de la Central se ven sorprendidas ante la llegada de Riley al campamento de hockey. Alegría, Tristeza, Ira, Miedo y Asco llevan mucho tiempo al mando, pero no saben cómo reaccionar cuando aparecen nuevas emociones.",
-    image: "https://image.tmdb.org/t/p/w500/pA7QO28LWe2A958w1RkG3kXYqD7.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/en/f/f7/Inside_Out_2_poster.jpg"
   }
 ];
