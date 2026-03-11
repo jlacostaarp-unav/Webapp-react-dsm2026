@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { Container, Row, Col, Navbar } from 'react-bootstrap';
+import { Film } from 'lucide-react';
+import { mockMovies } from './data/mockMovies';
+import { MovieCard } from './components/MovieCard';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-vh-100 d-flex flex-column">
+      <Navbar variant="dark" className="navbar-custom sticky-top py-3">
+        <Container>
+          <Navbar.Brand href="#home" className="d-flex align-items-center fw-bold fs-4">
+            <Film className="me-2 text-primary" />
+            VOD<span className="text-primary">React</span>
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+
+      <main className="flex-grow-1 py-5">
+        <Container>
+          <div className="mb-5 text-center">
+            <h1 className="fw-bold mb-3">Catálogo de Películas</h1>
+            <p className="text-muted lead">Explora nuestra selección de los mejores títulos.</p>
+          </div>
+          
+          <Row xs={1} md={2} lg={4} className="g-4">
+            {mockMovies.map(movie => (
+              <Col key={movie.id}>
+                <MovieCard movie={movie} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </main>
+
+      <footer className="bg-dark text-center py-4 mt-auto border-top border-secondary">
+        <Container>
+          <p className="mb-0 text-muted">© 2026 VODReact. Todos los derechos reservados.</p>
+        </Container>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
