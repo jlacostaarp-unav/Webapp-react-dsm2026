@@ -104,7 +104,41 @@ body {
   padding: 0;
   text-align: left;
 }
+/* Category Bar */
+.category-bar-wrapper {
+  background-color: rgba(11, 11, 11, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  top: 76px; /* Below navbar */
+}
+
+.category-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-dark-light {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.hover-bg-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: white !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* Movie Detail Page */
+
 .movie-detail-wrapper {
   background-color: #0b0b0b;
 }
