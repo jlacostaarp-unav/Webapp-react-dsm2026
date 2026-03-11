@@ -2,6 +2,7 @@
   --bg-color: #0f1115;
   --text-primary: #f8f9fa;
   --accent-color: #3b82f6;
+  --overlay-dark: rgba(15, 17, 21, 0.9);
 }
 
 body {
@@ -12,26 +13,43 @@ body {
   display: block;
 }
 
-/* Utils para modo oscuro general */
+/* Efectos Navbar */
 .navbar-custom {
-  background-color: rgba(15, 17, 21, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.navbar-custom .nav-link {
+  transition: color 0.3s ease;
+}
+.navbar-custom .nav-link:hover {
+  color: #fff !important;
+}
+
+/* Efectos Cards Catálogo */
 .movie-card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
   background-color: #1a1d24;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .movie-card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  z-index: 2;
 }
 
-/* Sobrescribir estilos por defecto de Vite (App.css) si es necesario, 
-   o usaremos Bootstrap para Layout */
+.movie-card-hover .card-img-top {
+  transition: transform 0.4s ease;
+}
+
+.movie-card-hover:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Base resets */
 #root {
   max-width: 100%;
   margin: 0;
