@@ -4,6 +4,7 @@ import { mockMovies } from './data/mockMovies';
 import { MovieCard } from './components/MovieCard';
 import { Navigation } from './components/Navigation';
 import { HeroCarousel } from './components/HeroCarousel';
+import { Footer } from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -54,11 +55,7 @@ function App() {
         </Container>
       </main>
 
-      <footer className="bg-dark text-center py-4 mt-auto border-top border-secondary">
-        <Container>
-          <p className="mb-0 text-muted">© 2026 VODReact. Todos los derechos reservados.</p>
-        </Container>
-      </footer>
+      <Footer />
     </div>
   );
 }
