@@ -40,10 +40,10 @@ export const HeroCarousel = ({ movies }) => {
                 </p>
                 
                 <div className="d-flex gap-3">
-                  <Button variant="light" size="lg" className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill">
+                  <Button variant="light" size="lg" className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill shadow-sm">
                     <Play size={24} className="me-2" fill="currentColor" /> Reproducir
                   </Button>
-                  <Button variant="outline-light" size="lg" className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill bg-dark bg-opacity-50">
+                  <Button variant="outline-light" size="lg" className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill bg-dark bg-opacity-50 blur-bg">
                     <Info size={24} className="me-2" /> Más información
                   </Button>
                 </div>

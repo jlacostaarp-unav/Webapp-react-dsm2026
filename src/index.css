@@ -26,6 +26,54 @@ body {
   color: #fff !important;
 }
 
+/* Efectos Hero Carousel */
+.hero-carousel {
+  position: relative;
+}
+
+.hero-carousel .carousel-indicators {
+  margin-bottom: 3rem;
+}
+
+.hero-carousel .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.hero-carousel .carousel-indicators .active {
+  background-color: #fff;
+  transform: scale(1.3);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content {
+  animation: fadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.blur-bg {
+  backdrop-filter: blur(8px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Efectos Cards Catálogo */
 .movie-card-hover {
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
