@@ -1,22 +1,15 @@
 import React from 'react';
-import { Container, Row, Col, Navbar } from 'react-bootstrap';
-import { Film } from 'lucide-react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { mockMovies } from './data/mockMovies';
 import { MovieCard } from './components/MovieCard';
+import { Navigation } from './components/Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 function App() {
   return (
     <div className="min-vh-100 d-flex flex-column">
-      <Navbar variant="dark" className="navbar-custom sticky-top py-3">
-        <Container>
-          <Navbar.Brand href="#home" className="d-flex align-items-center fw-bold fs-4">
-            <Film className="me-2 text-primary" />
-            VOD<span className="text-primary">React</span>
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Navigation />
 
       <main className="flex-grow-1 py-5">
         <Container>
