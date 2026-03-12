@@ -7,6 +7,7 @@ import { useFavorites } from '../context/FavoritesContext';
 import { useAuth } from '../context/AuthContext';
 import { useInteraction } from '../context/InteractionContext';
 import StarRating from '../components/StarRating';
+import CommentSection from '../components/CommentSection';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -132,6 +133,7 @@ const MovieDetail = () => {
                 ))}
               </Row>
             </div>
+            <CommentSection movieId={movie.id} />
           </Col>
           <Col lg={4}>
             <div className="info-sidebar bg-dark p-4 rounded-4 border border-secondary border-opacity-10 shadow">

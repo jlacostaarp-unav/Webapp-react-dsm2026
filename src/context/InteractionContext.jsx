@@ -11,9 +11,18 @@ export const InteractionProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : {};
   });
 
+  const [comments, setComments] = useState(() => {
+    const saved = localStorage.getItem('global_movie_comments');
+    return saved ? JSON.parse(saved) : {};
+  });
+
   useEffect(() => {
     localStorage.setItem('global_movie_ratings', JSON.stringify(ratings));
   }, [ratings]);
+
+  useEffect(() => {
+    localStorage.setItem('global_movie_comments', JSON.stringify(comments));
+  }, [comments]);
 
   const addRating = (movieId, ratingValue) => {
     if (!user) return;
@@ -52,12 +61,35 @@ export const InteractionProvider = ({ children }) => {
     return userRating ? userRating.rating : 0;
   };
 
+  const addComment = (movieId, text) => {
+    if (!user || !text.trim()) return;
+
+    const newComment = {
+      id: Date.now(),
+      username: user.username,
+      text: text,
+      date: new Date().toLocaleString()
+    };
+
+    setComments(prev => ({
+      ...prev,
+      [movieId]: [...(prev[movieId] || []), newComment]
+    }));
+  };
+
+  const getMovieComments = (movieId) => {
+    return comments[movieId] || [];
+  };
+
   return (
     <InteractionContext.Provider value={{ 
       ratings, 
       addRating, 
       getMovieRatingData,
-      getUserRating 
+      getUserRating,
+      comments,
+      addComment,
+      getMovieComments 
     }}>
       {children}
     </InteractionContext.Provider>
