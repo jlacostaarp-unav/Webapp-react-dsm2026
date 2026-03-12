@@ -20,17 +20,12 @@ export const InteractionProvider = ({ children }) => {
 
     setRatings(prev => {
       const movieRatings = prev[movieId] || [];
-      const userRatingIndex = movieRatings.findIndex(r => r.username === user.username);
+      const hasVoted = movieRatings.some(r => r.username === user.username);
       
-      let newMovieRatings;
-      if (userRatingIndex > -1) {
-        // Actualizar voto existente
-        newMovieRatings = [...movieRatings];
-        newMovieRatings[userRatingIndex] = { username: user.username, rating: ratingValue };
-      } else {
-        // Nuevo voto
-        newMovieRatings = [...movieRatings, { username: user.username, rating: ratingValue }];
-      }
+      if (hasVoted) return prev; // Bloquear si ya ha votado
+
+      // Nuevo voto
+      const newMovieRatings = [...movieRatings, { username: user.username, rating: ratingValue }];
 
       return {
         ...prev,

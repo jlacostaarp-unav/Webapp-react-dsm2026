@@ -68,12 +68,16 @@ const MovieDetail = () => {
                     <StarRating 
                       initialRating={userRating} 
                       onRate={(val) => addRating(movie.id, val)} 
+                      readonly={userRating > 0}
                     />
                     <span className="fw-bold ms-2">
                       {ratingData.count > 0 ? `${ratingData.average} / 5` : "Sin valoraciones"}
                     </span>
                     {ratingData.count > 0 && (
                       <span className="text-secondary small ms-1">({ratingData.count} votos)</span>
+                    )}
+                    {userRating > 0 && (
+                      <Badge bg="success" className="ms-2 bg-opacity-10 text-success border border-success border-opacity-25">Ya has valorado</Badge>
                     )}
                   </div>
                 </div>
