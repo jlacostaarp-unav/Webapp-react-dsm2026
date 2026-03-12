@@ -33,8 +33,6 @@ export const Navigation = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto ms-4">
             <Nav.Link as={Link} to="/" className={`${location.pathname === '/' ? 'text-white fw-bold' : 'text-white-50'} px-3`}>Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/" className="text-white-50 px-3">Películas</Nav.Link>
-            <Nav.Link as={Link} to="/" className="text-white-50 px-3">Series</Nav.Link>
             <Nav.Link as={Link} to="/favorites" className={`${location.pathname === '/favorites' ? 'text-white fw-bold' : 'text-white-50'} px-3 d-flex align-items-center gap-2`}>
               Mi Lista
             </Nav.Link>

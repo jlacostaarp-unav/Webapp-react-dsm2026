@@ -5,6 +5,8 @@ import { Footer } from './components/Footer';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Favorites from './pages/Favorites';
+import Contact from './pages/Contact';
+import Legal from './pages/Legal';
 import { FavoritesProvider } from './context/FavoritesContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -21,6 +23,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/movie/:id" element={<MovieDetail />} />
               <Route path="/favorites" element={<Favorites />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/legal" element={<Legal />} />
             </Routes>
           </main>
 

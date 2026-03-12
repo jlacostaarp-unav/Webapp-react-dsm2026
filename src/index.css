@@ -297,3 +297,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
+
+/* Páginas Estáticas */
+.bg-dark-light {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.legal-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.contact-form .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+}
+

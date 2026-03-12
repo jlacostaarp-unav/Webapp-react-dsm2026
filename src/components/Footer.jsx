@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Facebook, Twitter, Instagram, Youtube, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
@@ -25,11 +26,9 @@ export const Footer = () => {
           <Col lg={2} md={6}>
             <h5 className="fw-bold mb-4">Catálogo</h5>
             <ul className="list-unstyled footer-links">
-              <li><a href="#">Películas</a></li>
-              <li><a href="#">Series</a></li>
-              <li><a href="#">Documentales</a></li>
-              <li><a href="#">Novedades</a></li>
-              <li><a href="#">Tendencias</a></li>
+              <li><Link to="/">Películas</Link></li>
+              <li><Link to="/">Novedades</Link></li>
+              <li><Link to="/">Tendencias</Link></li>
             </ul>
           </Col>
 
@@ -37,10 +36,7 @@ export const Footer = () => {
             <h5 className="fw-bold mb-4">Soporte</h5>
             <ul className="list-unstyled footer-links">
               <li><a href="#">Cuenta</a></li>
-              <li><a href="#">Centro de ayuda</a></li>
-              <li><a href="#">Dispositivos</a></li>
-              <li><a href="#">Tarjetas regalo</a></li>
-              <li><a href="#">Contacto</a></li>
+              <li><Link to="/contact">Contacto</Link></li>
             </ul>
           </Col>
 
@@ -71,9 +67,9 @@ export const Footer = () => {
           </Col>
           <Col md={6} className="text-center text-md-end mt-3 mt-md-0">
             <div className="legal-links d-flex gap-3 justify-content-center justify-content-md-end">
-              <a href="#" className="text-secondary small text-decoration-none">Privacidad</a>
-              <a href="#" className="text-secondary small text-decoration-none">Términos</a>
-              <a href="#" className="text-secondary small text-decoration-none">Cookies</a>
+              <Link to="/legal" className="text-secondary small text-decoration-none">Privacidad</Link>
+              <Link to="/legal" className="text-secondary small text-decoration-none">Términos</Link>
+              <Link to="/legal" className="text-secondary small text-decoration-none">Cookies</Link>
             </div>
           </Col>
         </Row>
