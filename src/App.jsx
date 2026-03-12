@@ -4,6 +4,7 @@ import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
+import Favorites from './pages/Favorites';
 import { FavoritesProvider } from './context/FavoritesContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/movie/:id" element={<MovieDetail />} />
+              <Route path="/favorites" element={<Favorites />} />
             </Routes>
           </main>
 

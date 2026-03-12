@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Button, Container } from 'react-bootstrap';
 import { Play, Info } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const HeroCarousel = ({ movies }) => {
   // Tomamos solo las 3 primeras películas para el hero
@@ -43,7 +44,13 @@ export const HeroCarousel = ({ movies }) => {
                   <Button variant="light" size="lg" className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill shadow-sm">
                     <Play size={24} className="me-2" fill="currentColor" /> Reproducir
                   </Button>
-                  <Button variant="outline-light" size="lg" className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill bg-dark bg-opacity-50 blur-bg">
+                  <Button 
+                    as={Link} 
+                    to={`/movie/${movie.id}`} 
+                    variant="outline-light" 
+                    size="lg" 
+                    className="px-5 py-3 fw-bold d-flex align-items-center rounded-pill bg-dark bg-opacity-50 blur-bg text-decoration-none"
+                  >
                     <Info size={24} className="me-2" /> Más información
                   </Button>
                 </div>
