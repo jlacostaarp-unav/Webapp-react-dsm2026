@@ -10,32 +10,35 @@ import Legal from './pages/Legal';
 import Login from './pages/Login';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { AuthProvider } from './context/AuthContext';
+import { InteractionProvider } from './context/InteractionContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 function App() {
   return (
     <AuthProvider>
-      <FavoritesProvider>
-        <Router>
-          <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-            <Navigation />
-            
-            <main className="flex-grow-1">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/movie/:id" element={<MovieDetail />} />
-                <Route path="/favorites" element={<Favorites />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/legal" element={<Legal />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
-            </main>
+      <InteractionProvider>
+        <FavoritesProvider>
+          <Router>
+            <div className="min-vh-100 d-flex flex-column bg-dark text-white">
+              <Navigation />
+              
+              <main className="flex-grow-1">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/movie/:id" element={<MovieDetail />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/legal" element={<Legal />} />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </main>
 
-            <Footer />
-          </div>
-        </Router>
-      </FavoritesProvider>
+              <Footer />
+            </div>
+          </Router>
+        </FavoritesProvider>
+      </InteractionProvider>
     </AuthProvider>
   );
 }

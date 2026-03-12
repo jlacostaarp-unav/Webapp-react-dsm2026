@@ -5,15 +5,20 @@ import { Play, Plus, Star, ArrowLeft, Clock, Calendar, Heart } from 'lucide-reac
 import { mockMovies } from '../data/mockMovies';
 import { useFavorites } from '../context/FavoritesContext';
 import { useAuth } from '../context/AuthContext';
+import { useInteraction } from '../context/InteractionContext';
+import StarRating from '../components/StarRating';
 
 const MovieDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { user } = useAuth();
+  const { addRating, getMovieRatingData, getUserRating } = useInteraction();
   
   const movie = mockMovies.find(m => m.id === parseInt(id));
   const favorited = isFavorite(movie?.id);
+  const ratingData = getMovieRatingData(movie?.id);
+  const userRating = getUserRating(movie?.id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,11 +62,19 @@ const MovieDetail = () => {
             </Col>
             <Col md={8} lg={9}>
               <div className="movie-info-content">
-                <div className="d-flex align-items-center gap-3 mb-3">
+                <div className="d-flex align-items-center gap-4 mb-3">
                   <Badge bg="primary" className="px-3 py-2">{movie.category}</Badge>
-                  <div className="d-flex align-items-center text-warning gap-1">
-                    <Star size={18} fill="currentColor" />
-                    <span className="fw-bold">{movie.rating}</span>
+                  <div className="d-flex align-items-center text-warning gap-2">
+                    <StarRating 
+                      initialRating={userRating} 
+                      onRate={(val) => addRating(movie.id, val)} 
+                    />
+                    <span className="fw-bold ms-2">
+                      {ratingData.count > 0 ? `${ratingData.average} / 5` : "Sin valoraciones"}
+                    </span>
+                    {ratingData.count > 0 && (
+                      <span className="text-secondary small ms-1">({ratingData.count} votos)</span>
+                    )}
                   </div>
                 </div>
                 <h1 className="display-3 fw-bold text-white mb-3">{movie.title}</h1>
