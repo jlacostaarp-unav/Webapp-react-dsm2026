@@ -1,27 +1,35 @@
 import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { Star, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFavorites } from '../context/FavoritesContext';
+import { useAuth } from '../context/AuthContext';
 
 export const MovieCard = ({ movie }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
-  const favorite = isFavorite(movie.id);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const favorited = isFavorite(movie.id);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
+    if (!user) {
+      navigate('/login');
+      return;
+    }
     toggleFavorite(movie.id);
   };
   return (
     <Card className="h-100 shadow-sm border-0 movie-card-hover bg-dark text-white rounded-4 overflow-hidden">
       <Link to={`/movie/${movie.id}`} className="text-decoration-none text-white pos-relative">
         <div className="favorite-btn-wrapper">
-          <button 
-            className={`btn-favorite ${favorite ? 'active' : ''}`}
+          <button
+            className={`btn-favorite ${favorited ? 'active' : ''}`}
             onClick={handleFavoriteClick}
-            aria-label="Añadir a favoritos"
+            title={favorited ? "Quitar de favoritos" : "Añadir a favoritos"}
+            aria-label={favorited ? "Quitar de favoritos" : "Añadir a favoritos"}
           >
-            <Heart size={20} fill={favorite ? "currentColor" : "none"} />
+            <Heart size={20} fill={favorited ? "currentColor" : "none"} />
           </button>
         </div>
         <Card.Img variant="top" src={movie.image} alt={movie.title} style={{ height: '350px', objectFit: 'cover' }} />

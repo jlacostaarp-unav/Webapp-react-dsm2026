@@ -1,23 +1,33 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
 
 const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem('vod_favorites');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const { user } = useAuth();
+  const [favorites, setFavorites] = useState([]);
 
+  // Cargar favoritos al cambiar de usuario
   useEffect(() => {
-    localStorage.setItem('vod_favorites', JSON.stringify(favorites));
-  }, [favorites]);
+    if (user) {
+      const savedFavorites = localStorage.getItem(`favorites_${user.username}`);
+      setFavorites(savedFavorites ? JSON.parse(savedFavorites) : []);
+    } else {
+      setFavorites([]); // Limpiar si no hay usuario
+    }
+  }, [user]);
 
   const toggleFavorite = (movieId) => {
-    setFavorites(prev => 
-      prev.includes(movieId) 
+    if (!user) return; // Seguridad extra
+
+    setFavorites(prev => {
+      const newFavorites = prev.includes(movieId)
         ? prev.filter(id => id !== movieId)
-        : [...prev, movieId]
-    );
+        : [...prev, movieId];
+
+      localStorage.setItem(`favorites_${user.username}`, JSON.stringify(newFavorites));
+      return newFavorites;
+    });
   };
 
   const isFavorite = (movieId) => favorites.includes(movieId);

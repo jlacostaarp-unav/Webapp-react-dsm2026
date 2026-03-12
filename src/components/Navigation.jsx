@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Film, User, Search, Heart } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Film, User, Search, Heart, LogOut } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const handleMyListClick = (e) => {
+    if (!user) {
+      e.preventDefault();
+      navigate('/login', { state: { from: { pathname: '/favorites' } } });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +43,12 @@ export const Navigation = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto ms-4">
             <Nav.Link as={Link} to="/" className={`${location.pathname === '/' ? 'text-white fw-bold' : 'text-white-50'} px-3`}>Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/favorites" className={`${location.pathname === '/favorites' ? 'text-white fw-bold' : 'text-white-50'} px-3 d-flex align-items-center gap-2`}>
+            <Nav.Link 
+              as={Link} 
+              to="/favorites" 
+              onClick={handleMyListClick}
+              className={`${location.pathname === '/favorites' ? 'text-white fw-bold' : 'text-white-50'} px-3 d-flex align-items-center gap-2`}
+            >
               Mi Lista
             </Nav.Link>
           </Nav>
@@ -41,9 +56,23 @@ export const Navigation = () => {
             <Nav.Link href="#search" className="text-white me-3">
               <Search size={20} />
             </Nav.Link>
-            <Nav.Link href="#profile" className="text-white">
-              <User size={20} />
-            </Nav.Link>
+            
+            {user ? (
+              <div className="d-flex align-items-center gap-3">
+                <span className="text-white-50 small fw-bold">Hola, {user.username}</span>
+                <button 
+                  onClick={logout}
+                  className="btn btn-link p-0 text-white-50 hover-white transition-all shadow-none"
+                  title="Cerrar Sesión"
+                >
+                  <LogOut size={20} />
+                </button>
+              </div>
+            ) : (
+              <Nav.Link as={Link} to="/login" className="text-white p-2 bg-primary bg-opacity-10 rounded-circle transition-all hover-scale">
+                <User size={20} />
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

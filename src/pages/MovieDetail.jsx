@@ -1,19 +1,31 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
 import { Play, Plus, Star, ArrowLeft, Clock, Calendar, Heart } from 'lucide-react';
 import { mockMovies } from '../data/mockMovies';
 import { useFavorites } from '../context/FavoritesContext';
+import { useAuth } from '../context/AuthContext';
 
 const MovieDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const { user } = useAuth();
+  
   const movie = mockMovies.find(m => m.id === parseInt(id));
-  const { isFavorite, toggleFavorite } = useFavorites();
-  const favorite = movie ? isFavorite(movie.id) : false;
+  const favorited = isFavorite(movie?.id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleToggleFavorite = () => {
+    if (!user) {
+      navigate('/login', { state: { from: { pathname: window.location.pathname } } });
+      return;
+    }
+    toggleFavorite(movie.id);
+  };
 
   if (!movie) {
     return (
@@ -65,13 +77,13 @@ const MovieDetail = () => {
                     <Play size={20} fill="currentColor" /> Reproducir
                   </Button>
                   <Button 
-                    variant={favorite ? "primary" : "outline-light"} 
+                    variant={favorited ? "primary" : "outline-light"} 
                     size="lg" 
                     className="px-4 py-3 rounded-pill d-flex align-items-center gap-2 fw-bold"
-                    onClick={() => toggleFavorite(movie.id)}
+                    onClick={handleToggleFavorite}
                   >
-                    <Heart size={20} fill={favorite ? "currentColor" : "none"} /> 
-                    {favorite ? "En favoritos" : "Añadir a favoritos"}
+                    <Heart size={20} fill={favorited ? "currentColor" : "none"} /> 
+                    {favorited ? "En favoritos" : "Añadir a favoritos"}
                   </Button>
                 </div>
               </div>
