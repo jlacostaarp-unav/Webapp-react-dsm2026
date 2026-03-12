@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
-import { Star, Heart } from 'lucide-react';
+import { Star, Heart, MessageSquare } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFavorites } from '../context/FavoritesContext';
 import { useAuth } from '../context/AuthContext';
@@ -9,10 +9,11 @@ import { useInteraction } from '../context/InteractionContext';
 export const MovieCard = ({ movie }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { user } = useAuth();
-  const { getMovieRatingData } = useInteraction();
+  const { getMovieRatingData, getMovieComments } = useInteraction();
   const navigate = useNavigate();
   const favorited = isFavorite(movie.id);
   const ratingData = getMovieRatingData(movie.id);
+  const commentCount = getMovieComments(movie.id).length;
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -42,12 +43,19 @@ export const MovieCard = ({ movie }) => {
             <Badge bg="primary">{movie.category}</Badge>
           </div>
           
-          <div className="d-flex align-items-center mb-3">
-            <Star size={16} className="text-warning me-1" fill="currentColor" />
-            <span className="fw-semibold">
-              {ratingData.count > 0 ? ratingData.average : "-.-"}
-            </span>
-            <span className="text-secondary small ms-1">({ratingData.count})</span>
+          <div className="d-flex align-items-center gap-3 mb-3">
+            <div className="d-flex align-items-center">
+              <Star size={16} className="text-warning me-1" fill="currentColor" />
+              <span className="fw-semibold">
+                {ratingData.count > 0 ? ratingData.average : "-.-"}
+              </span>
+              <span className="text-secondary small ms-1">({ratingData.count})</span>
+            </div>
+            
+            <div className="d-flex align-items-center text-white-50">
+              <MessageSquare size={16} className="me-1" />
+              <span className="small fw-semibold">{commentCount}</span>
+            </div>
           </div>
           
           <Card.Text className="text-secondary small mb-4" style={{
