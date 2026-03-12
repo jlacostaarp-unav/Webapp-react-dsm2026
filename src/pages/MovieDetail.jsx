@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
-import { Play, Plus, Star, ArrowLeft, Clock, Calendar } from 'lucide-react';
+import { Play, Plus, Star, ArrowLeft, Clock, Calendar, Heart } from 'lucide-react';
 import { mockMovies } from '../data/mockMovies';
+import { useFavorites } from '../context/FavoritesContext';
 
 const MovieDetail = () => {
   const { id } = useParams();
   const movie = mockMovies.find(m => m.id === parseInt(id));
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorite = movie ? isFavorite(movie.id) : false;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,8 +64,14 @@ const MovieDetail = () => {
                   <Button variant="primary" size="lg" className="px-5 py-3 rounded-pill d-flex align-items-center gap-2 fw-bold shadow-lg">
                     <Play size={20} fill="currentColor" /> Reproducir
                   </Button>
-                  <Button variant="outline-light" size="lg" className="px-4 py-3 rounded-pill d-flex align-items-center gap-2 fw-bold">
-                    <Plus size={20} /> Mi lista
+                  <Button 
+                    variant={favorite ? "primary" : "outline-light"} 
+                    size="lg" 
+                    className="px-4 py-3 rounded-pill d-flex align-items-center gap-2 fw-bold"
+                    onClick={() => toggleFavorite(movie.id)}
+                  >
+                    <Heart size={20} fill={favorite ? "currentColor" : "none"} /> 
+                    {favorite ? "En favoritos" : "Añadir a favoritos"}
                   </Button>
                 </div>
               </div>
