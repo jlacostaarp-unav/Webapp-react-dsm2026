@@ -17,6 +17,11 @@ export const Navigation = () => {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -61,7 +66,7 @@ export const Navigation = () => {
               <div className="d-flex align-items-center gap-3">
                 <span className="text-white-50 small fw-bold">Hola, {user.username}</span>
                 <button 
-                  onClick={logout}
+                  onClick={handleLogout}
                   className="btn btn-link p-0 text-white-50 hover-white transition-all shadow-none"
                   title="Cerrar Sesión"
                 >
